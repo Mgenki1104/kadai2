@@ -8,9 +8,14 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     @book.save
     redirect_to books_path
-
+  end
+  
+  def index
   end
 
+  def show
+  end
+  
   def index
     @books = Book.all
   end

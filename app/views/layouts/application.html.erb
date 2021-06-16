@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,32 +19,24 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-          
+      <% if user_signed_in? %>
           <li class="nav-item"><%= link_to "Home", books_path, class: "fas fa-home nav-link text-light"  %></li>
           <li class="nav-item"><%= link_to "Users", new_user_session_path, class: "fas fa-link nav-link text-light"  %></li>
           <li class="nav-item"><%= link_to "Books", books_path, class: "fas fa-user-plus nav-link text-light"  %></li>
           <li class="nav-item"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-in-alt nav-link text-light"  %></li>
-          
-          <% else %>
-          
-          <%#<li><a class="fas fa-home nav-link text-light" href="/"> Home</a></li> %>
-          <%#<li><a class="fas fa-link nav-link text-light" href="/home/about"> About</a></li> %>
+      <% else %>
           <li class="nav-item"><%= link_to "Home", root_path, class: "fas fa-home nav-link text-light"  %></li>
-          <li class="nav-item"><%= link_to "About", new_user_session_path, class: "fas fa-link nav-link text-light"  %></li>
+          <li class="nav-item"><%= link_to "About", about_path, class: "fas fa-link nav-link text-light"  %></li>
           <li class="nav-item"><%= link_to "sign up", new_user_registration_path, class: "fas fa-user-plus nav-link text-light"  %></li>
           <li class="nav-item"><%= link_to "login", new_user_session_path, class: "fas fa-sign-in-alt nav-link text-light"  %></li>
-          <%#<li><a class="fas fa-user-plus nav-link text-light" href="/users/sign_up"> sign up</a></li> %>
-          <%#<li><a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in"> login</a></li> %>
-          
-          <% end %>
-          
+      <% end %>
+
         </ul>
       </div>
     </div>
   </nav>
   </header>
-  <main>
+  <%#<main>
     <%#<% if user_signed_in? %>
      <%# <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -53,8 +44,8 @@
       <li>
       <%= link_to 'マイページ', user_path(current_user.id) %>
       </li>
-      
-      
+
+
    <%# <% else %>
      <%# <li>
         <%= link_to "新規登録", new_user_registration_path %>
@@ -63,11 +54,11 @@
         <%= link_to "ログイン", new_user_session_path %>
       </li>
    <%# <% end %>
-  
-    
+
+
    <%= yield %>
-  </main
-     <footer>
+  <%#</main>%>
+      <footer>
       <div class="container mt-5">
         <div class="row">
           <div class="mx-auto">
@@ -75,6 +66,6 @@
           </div>
         </div>
       </div>
-  
+    </footer>
   </body>
 </html>
