@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
+
   def new
-    #@post_image = PostImage.new
-    @user = User.new
+     @users = User.all
+    @user = User.find(params[:id])
+    @introduction = Introduction.new
+    @books = @user.books
+    @book = Book.new
   end
 
   def create
@@ -11,20 +15,39 @@ class UsersController < ApplicationController
     @user.save
     redirect_to users_path
   end
-  
-  def index
-  @users = User.all
-  end
-    
-  def show
-    @user = User.find(params[:id])
 
-    @books = @user.books.all
+  def index
+    @users = User.all
+    @introduction = Introduction.new
+    @book = Book.new
   end
-private
+
+  def show
+    @users = User.all
+    @user = User.find(params[:id])
+    @introduction = Introduction.new
+    @books = @user.books
+    @book = Book.new
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to user_path(@user.id)
+    else 
+      render :edit
+    end
+  end
+
+  private
 
   def user_params
-    params.require(:user).permit(:name, :introdaction, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
 
   end
 end

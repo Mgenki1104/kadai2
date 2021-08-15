@@ -1,9 +1,0 @@
-<h1>yu-za-フォーム</h1>
-<%= form_with model: @user, local:true do |f| %>
-  <h4>画像</h4>
-  <%= f.attachment_field :profile_image %>
-  
-  <h4>説明</h4>
-  <%#= f.text_area :caption %>
-  <%= f.submit '投稿' %>
-<% end %>
