@@ -9,13 +9,9 @@
    <%= render 'users/new' %>
 
 <div class="row">
-  <% if @book.user == current_user %>
-  <%= link_to '', edit_user_path(current_user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-  <%#<a class="btn btn-outline-secondary btn-block fas fa-user-cog " href="/users/user/edit"></a>%>
-  <% else %>
-  <%= link_to '', user_path(current_user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
-  <% end %>
- 
+  
+  <%= link_to '', edit_user_path(@book.user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+
 </div>
 
 <div class='A'><%= render 'books/new', book: @book %></div>
